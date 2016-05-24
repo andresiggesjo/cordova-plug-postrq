@@ -25,58 +25,33 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
 
-// Post
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
-// Post end
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/*
-*   TODO:
-*   - URL *
-*   - POST / GET *
-*   - Values
-*   - Custom headers
-*
-* */
+
 public class BackgroundMode extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("login")) {
-            String urlString = args.getString(0); // Vilken url som helst
-            //String urlParameters = args.getString(1); // Vilket data som helst
-            //String urlMethod = args.getString(2);
-            //String password = args.getString(1);
-            String resultString = "knas";
-            //String url = "https://satans-demokrati-72.herokuapp.com/login";
-            //"https://satans-demokrati-72.herokuapp.com/login"
-            /* POST REQUEST */
+            String urlString = args.getString(0); 
+            String resultString = "error";
+
 
             String urlParameters = args.getString(1);
 
 
             try {
 
-                //URL url = new URL(urlString);
-                //HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                //conn.setReadTimeout(15000);
-                //conn.setConnectTimeout(15000);
-                //conn.setRequestMethod("POST");
-                //conn.setDoOutput(true);
-               // conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
-                //conn.setRequestProperty("Accept","*/*");
-
-
-                //String urlParameters = "name=322&password=322";
                 URL url = new URL(urlString);
                 URLConnection conn = url.openConnection();
-
-
                 conn.setDoOutput(true);
 
                 OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
@@ -102,7 +77,7 @@ public class BackgroundMode extends CordovaPlugin {
 
 
 
-            /*Post request end */
+            /
 
             // return values
             this.echo(resultString, callbackContext);
